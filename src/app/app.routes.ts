@@ -14,6 +14,9 @@ import { GamesComponent } from './pages/games/games.component';
 import { OrdersComponent } from './pages/orders/orders.component';
 import { PreferenceListPageComponent } from './pages/preferenceList/preference-list.component';
 import { SportTeamComponent } from './pages/sport-team/sport-team.component';
+import { ProductComponent } from './pages/product/product.component';
+import { CategoryComponent } from '@ctrl/ngx-emoji-mart';
+import { CategoriesComponent } from './pages/category/category.component';
 
 export const routes: Routes = [
   {
@@ -136,6 +139,32 @@ export const routes: Routes = [
           showInSidebar: true
         }
       },
+      {
+        path: 'product',
+        component: ProductComponent,
+        data: { 
+          authorities: [
+            IRoleType.admin, 
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Product',
+          showInSidebar: true
+        }
+      },
+      {
+        path: 'category',
+        component: CategoriesComponent,
+        data: { 
+          authorities: [
+            IRoleType.admin, 
+            IRoleType.superAdmin,
+            IRoleType.user,
+          ],
+          name: 'Category',
+          showInSidebar: true
+        }
+      }
     ],
   },
 ];

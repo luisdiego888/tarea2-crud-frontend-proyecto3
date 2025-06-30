@@ -1,0 +1,23 @@
+<div class="team-container">
+  @for (category of pCategoryList; track category) {
+    <div class="team-item">
+      <h2>Name: {{category.name}}</h2>
+      <h3>Description: {{category.description}}</h3>
+      <div class="player-content">
+        @for (product of category.products; track product) {
+          <h2 class="player-item">Product:</h2>
+          <p class="player-item">Name: {{product.name}}</p>
+          <p class="player-item">Description: {{product.description}}</p>
+          <p class="player-item">Price: {{product.price}}</p>
+          <p class="player-item">Stock: {{product.stockQuantity}}</p>
+        }
+    </div>
+      @if (areActionsAvailable) {
+        <button (click)="callUpdateModalMethod.emit(category)" class="btn btn-success">Edit</button>
+        <button  (click)="callDeleteMethod.emit(category)" class="btn btn-danger">Delete</button>
+      }
+    </div>
+  } @empty {
+    <p>No categories available.</p>
+  }
+</div>

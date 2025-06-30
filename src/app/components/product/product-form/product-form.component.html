@@ -1,0 +1,53 @@
+<form [formGroup]="form" class="row mb-4">
+    <div>
+        <h2 class="mb-0">Add Product</h2>
+    </div>
+    <div class="mb-2 col-4">
+        <label class="mb-1" for="name">Name*</label>
+        <input id="name" formControlName="name" type="text" class="form-control">
+        @if (form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)) {
+        <p class="text-danger my-1">Name is required</p>
+        }
+    </div>
+    <div class="mb-2 col-4">
+        <label class="mb-1" for="description">Description*</label>
+        <input id="description" formControlName="description" type="text" class="form-control">
+        @if (form.controls['description'].invalid && (form.controls['description'].dirty ||
+        form.controls['description'].touched)) {
+        <p class="text-danger my-1">Description is required</p>
+        }
+    </div>
+        <div class="mb-2 col-4">
+        <label class="mb-1" for="price">Price*</label>
+        <input id="price" formControlName="price" type="number" class="form-control">
+        @if (form.controls['price'].invalid && (form.controls['price'].dirty ||
+        form.controls['price'].touched)) {
+        <p class="text-danger my-1">Price is required</p>
+        }
+    </div>
+        <div class="mb-2 col-4">
+        <label class="mb-1" for="stock">Stock*</label>
+        <input id="stock" formControlName="stock" type="number" class="form-control">
+        @if (form.controls['stock'].invalid && (form.controls['stock'].dirty ||
+        form.controls['stock'].touched)) {
+        <p class="text-danger my-1">Stock is required</p>
+        }
+    </div>
+        <div class="mb-2 col-4">
+        <label class="mb-1" for="category">Category*</label>
+        <select id="category" formControlName="category" class="form-control">
+            <option value="">Select...</option>
+            @for(item of categoriesList; track item.id){
+            <option value={{item.id}}>{{item.name}}</option>
+            }
+        </select>
+        @if (form.controls['category'].invalid && (form.controls['category'].dirty ||
+        form.controls['category'].touched)) {
+        <p class="text-danger my-1">Category is required</p>
+        }
+    </div>
+    
+     <div class="col-12">
+    <button (click)="callSave()" [disabled]="form.invalid" class="btn btn-primary" type="button">Save</button>
+  </div>
+</form>

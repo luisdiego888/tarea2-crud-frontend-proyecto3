@@ -1,0 +1,51 @@
+<h2>Lista de Productos</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      @if (areActionsAvailable) {
+        <th scope="col">ID</th>
+      }
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Category</th>
+      @if (areActionsAvailable) {
+        <th scope="col">Actions</th>
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of pProductsList; track item.id) {
+      <tr>
+        @if (areActionsAvailable) {
+          <th scope="row">{{item.id}}</th>
+        }
+        <td>{{item.name}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.stockQuantity}}</td>
+        <td>{{item.category?.name}}</td>
+        @if (areActionsAvailable) {
+          <td>
+            <button (click)="callUpdateModalMethod.emit(item);" class="btn btn-warning me-2" type="button">
+              <i class="fas fa-pen"></i>
+            </button>
+            <button (click)="callDeleteMethod.emit(item)" class="btn btn-danger" type="button">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        }
+      </tr>
+    } @empty {
+      <tr>
+        <td colspan="6">
+          <div class="d-flex justify-content-center align-items-center w-100">
+            <p class="mb-0">There are not products</p>
+          </div>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
