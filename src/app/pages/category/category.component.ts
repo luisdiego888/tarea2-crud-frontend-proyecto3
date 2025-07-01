@@ -10,7 +10,6 @@ import { ModalComponent } from "../../components/modal/modal.component";
 import { CategoryListComponent } from "../../components/category/category-list/category-list.component";
 import { ModalService } from "../../services/modal.service";
 
-
 @Component({
   selector: "app-category",
   templateUrl: "./category.component.html",
@@ -52,22 +51,20 @@ export class CategoriesComponent {
     this.categoryService.getAll();
   }
   
-
   saveCategory(item: ICategory) {
     this.categoryService.save(item);
     this.categoryForm.reset();
   }
 
   updateCategory(item: ICategory) {
-      this.categoryService.update(item);
-      this.modalService.closeAll();
-      this.categoryForm.reset();
-    }
+    this.categoryService.update(item);
+    this.modalService.closeAll();
+    this.categoryForm.reset();
+  }
   
-  
-    deleteCategory(item: ICategory) {
+  deleteCategory(item: ICategory) {
       this.categoryService.delete(item);
-    }
+  }
 
     openEditCategoryModal(category: ICategory) {
       console.log("openEditCategoryModal", category);
